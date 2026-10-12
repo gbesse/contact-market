@@ -1,0 +1,33 @@
+{
+  "repository": "https://github.com/gbesse/frontier-lab",
+  "commit": "0dde4a13f57c395063f5b783c64b59d6a845f6ee",
+  "extraction": "market",
+  "sourceSha256": {
+    "packages/space-mission-lab/src/commons.js": "c98afd24138297252d4729a95526ea1bc7890da0fa0df6758611819b9ba01de9",
+    "packages/space-mission-lab/src/commons-engine.js": "c07209eee2318451f24ef192ffec0d94efca0ee3ae1f8bb024e2107b70328049",
+    "studio/space-commons.js": "37a41f59567e713cc38dabf57d0b09ea4d0326205a14c7ecad8fd1f67fe8f2cd",
+    "studio/style.css": "61ba7db56140f6327b1aa3bcd230224890fe098dc8fb0cb0fc93cd32f4cf327e",
+    "studio/space.css": "d23c03dce756f2d618ba8925149bf092e158dd6cfda3ffa6e3adedf73119bfaa",
+    "studio/space-commons.css": "66cf868a54dde01e3e075e190166e5fa9b090cb2cb3d9b0015702f1a1acf0d8b",
+    "studio/space-commons-page.js": "915117165431ec586ff2c637ce4eb5afa1c372b829c547e5b2564d6c5500b537",
+    "packages/space-mission-lab/engines/requirements.lock.txt": "47467e42e889fe8f8de8ac27f17d4aaeae0d7759315e1ffb83a91a52391a2d48",
+    "packages/space-mission-lab/engines/ion_worker.py": "329e5822cd9450fd57c0567aec35ba99f2211ad0742da9f6eb883a60baccd8a0",
+    "packages/space-mission-lab/fixtures/commons/market-0426f52031ea912e.json": "e5fedcf0cf85ff4d70db5d8309316f30806efc5c98b2d79f76b81c473e20b47c",
+    "packages/space-mission-lab/fixtures/commons/market-1359de268507343f.json": "5fa5798e031e218745bfe57e495e042966aa60490902baa813bb31c334c461ea",
+    "packages/space-mission-lab/fixtures/commons/market-3aaebafc55965d42.json": "ea065b0d04b7d236564cffb71e2ca97944eb0cf1837c0b6ea89f32ed6ae35357",
+    "packages/space-mission-lab/fixtures/commons/market-3efc1efb1a0c3dec.json": "04335b7cf6c63ec018b125a3e98bd6a7c6ac230a2d06796c48af79f0023ba1c9",
+    "packages/space-mission-lab/fixtures/commons/market-61fd711ebafbc26f.json": "9618311a324bc43feb5cedb48b8e686a63a1762ca6002fa1296e34ed4b70fd72",
+    "packages/space-mission-lab/fixtures/commons/market-9d5b5c52ba97b5d6.json": "914c5fe569a2fcedd995c991b12c6a2fb89e8fe2609492bf39cc85aaae9969b3",
+    "packages/space-mission-lab/fixtures/commons/market-9f7893bc7cb23aeb.json": "eb8910aaca3973e8973ffe7fbb6180071ffcb83ffae2be762b346b88c158e1f7",
+    "packages/space-mission-lab/fixtures/commons/market-aeb315e48a17d49f.json": "9c1565928977d0874d649928e70ee5c8d5a23cc491277b0e04eb955e93926786",
+    "packages/space-mission-lab/fixtures/commons/market-b8d4b85215b64448.json": "6e1d8fec6b37febab554fba9d1525ff713f8940f35b3e8bbc053d1852ddc10b2",
+    "packages/space-mission-lab/fixtures/commons/market-b972e8fed656bdc1.json": "bb90863f639c6c616da11a94ad0ba6ec193598a2688ab30f4005b0c1e92bc121",
+    "packages/space-mission-lab/fixtures/commons/market-ba0cb47ea7a363e3.json": "16778c61a49e91bbaba8aec8db1d034110186e2577c13b70476438cd959157d5",
+    "packages/space-mission-lab/fixtures/commons/market-e27c5a675e6a4f69.json": "aaf1ab71dc6bb71ae7b3e23b1d9eaadacf21226d461ada3cbf56050b8689409a",
+    "packages/space-mission-lab/fixtures/commons/market-fae65feff7671ed0.json": "31372d1afb2b24cdb7ca5cec980757119e46c490adbcd27e9576322b76357626",
+    "scripts/space-public-preview.mjs": "523c1f62fa6ac5b589c420551095c180c6faabfefdef95a258b6c0d45dc91ac7",
+    "LICENSE": "21f5a0a33c9be1b92476f41d82de75c482a3c9f514d408249429957a2571a200",
+    "AGENTS.md": "97ec7470463b413d04bd20dd38179bdd7f5ee946cb4fe1ea4bbc5fc239867eff",
+    ".prettierrc.json": "f583ff6d8ba542b76af46c4c024a0941b77aee51133bb0f69ec6eb1fa613de7e"
+  }
+}

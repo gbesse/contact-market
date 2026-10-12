@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "artifacts": [
+    {
+      "file": "ion.tar.gz",
+      "url": "https://api.github.com/repos/nasa-jpl/ION-DTN/tarball/ion-open-source-4.2.0",
+      "sha256": "df3783cc8c071c9ed52196ea07c4ba80df7b247dca29f81ffb12683540afaf9a"
+    },
+    {
+      "file": "automake.tar.gz",
+      "url": "https://ftp.gnu.org/gnu/automake/automake-1.16.5.tar.gz",
+      "sha256": "07bd24ad08a64bc17250ce09ec56e921d6343903943e99ccf63bbf0705e34605"
+    },
+    {
+      "file": "pkg.m4",
+      "url": "https://raw.githubusercontent.com/pkgconf/pkgconf/4b6fcd4e5baf03d5cb4797e46976cb69756ad865/pkg.m4",
+      "sha256": "f649256076fa72946d9a844636393128e1c31fd3591389b97aa55705c4df5766"
+    }
+  ]
+}

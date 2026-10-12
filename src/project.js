@@ -1,0 +1,38 @@
+export const project = {
+  kind: 'market',
+  slug: 'contact-market',
+  name: 'Contact Market',
+  port: 4324,
+  requirements: ['sgp4==2.25', 'ortools==9.15.6755', 'numpy==2.3.5'],
+  datasets: ['iss-2026-10-10'],
+  functions: ['sha', 'verified', 'version', 'satellite', 'contact_windows', 'market', 'main'],
+  tagline: [
+    'Optimiser la science transmise sous budget.',
+    'Optimize transmitted science under a budget.',
+    'Optimizar la ciencia transmitida con presupuesto.',
+  ],
+  purpose: [
+    'Calculer les contacts ISS depuis un TLE archivé, optimiser les demandes avec OR-Tools CP-SAT, comparer à premier arrivé/premier servi et vérifier un manifeste ION BPv7/UDP sur localhost.',
+    'Compute ISS contacts from an archived TLE, optimize requests with OR-Tools CP-SAT, compare against first-come-first-served and verify an ION BPv7/UDP manifest on localhost.',
+    'Calcular contactos ISS desde un TLE archivado, optimizar solicitudes con OR-Tools CP-SAT, comparar con orden de llegada y verificar un manifiesto ION BPv7/UDP en localhost.',
+  ],
+  tools: ['SGP4 2.25', 'OR-Tools 9.15.6755', 'ION 4.2.0', 'Ed25519'],
+  prerequisites: [
+    'Python 3.11–3.13, curl, compilateur C, make, autoconf et libtool. ION est compilé localement sans modification des paramètres système.',
+    'Python 3.11–3.13, curl, C compiler, make, autoconf and libtool. ION is compiled locally without changing system settings.',
+    'Python 3.11–3.13, curl, compilador C, make, autoconf y libtool. ION se compila localmente sin cambiar parámetros del sistema.',
+  ],
+  topics: [
+    'space',
+    'spaceflight',
+    'satellite-communications',
+    'delay-tolerant-networking',
+    'ion-dtn',
+    'bundle-protocol',
+    'operations-research',
+    'or-tools',
+    'scheduling',
+    'open-source',
+  ],
+  version: '0.1.0',
+};

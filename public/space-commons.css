@@ -1,0 +1,86 @@
+.commons-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.commons-tabs a {
+  padding: 10px 14px;
+  border: 1px solid #354650;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.commons-tabs a[aria-current] {
+  background: #72ebc1;
+  color: #101c26;
+}
+#commons-form input {
+  max-width: 260px;
+  margin: 10px 0;
+}
+#commons-link {
+  width: 100%;
+  font-size: 12px;
+  margin-top: 18px;
+}
+#commons-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 18px 0;
+}
+.commons-metric {
+  padding: 18px;
+  border: 1px solid #354650;
+  border-radius: 10px;
+  min-width: 170px;
+  flex: 1;
+}
+.commons-metric strong {
+  font-size: 25px;
+  color: #72ebc1;
+  display: block;
+  margin-top: 10px;
+  overflow-wrap: anywhere;
+}
+#commons-chart svg {
+  display: block;
+  width: 100%;
+  max-height: 380px;
+  background: #09151e;
+  border-radius: 10px;
+}
+#commons-chart text {
+  fill: #a9bec4;
+  font-size: 13px;
+}
+#commons-provenance p {
+  overflow-wrap: anywhere;
+}
+#commons-json {
+  white-space: pre-wrap;
+  max-height: 450px;
+  overflow: auto;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+@media (max-width: 700px) {
+  .commons-tabs a {
+    flex: 1 1 100%;
+  }
+  .commons-metric {
+    min-width: 140px;
+  }
+  header {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  #commons-chart svg {
+    min-height: 200px;
+  }
+}

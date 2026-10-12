@@ -1,0 +1,439 @@
+{
+  "schemaVersion": 1,
+  "version": "commons-v1",
+  "id": "market-aeb315e48a17d49f",
+  "kind": "market",
+  "config": {
+    "budgetUnits": 50,
+    "outage": "paris",
+    "seed": 42
+  },
+  "executedAt": "2026-10-10T16:26:17.947Z",
+  "elapsedMs": 5399,
+  "evidenceSha256": "d5a9c1198df343568eff3217381d1272f9f94066b0f295431e7839f1ae4f4d18",
+  "execution": "fresh",
+  "notices": {
+    "fr": "Géométrie ISS issue du TLE archivé du 10 octobre 2026, échantillonnée à 30 s, élévation minimale 10°. Antennes urbaines, débits, requêtes, valeurs scientifiques et crédits sont des hypothèses. ION transfère le manifeste sur localhost ; il ne prouve pas une liaison radio ni un paiement réel.",
+    "en": "ISS geometry uses the archived October 10, 2026 TLE, sampled every 30 s with 10° minimum elevation. City antennas, rates, requests, scientific values and credits are assumptions. ION transfers the manifest over localhost; it does not prove a radio link or a real payment.",
+    "es": "La geometría de la ISS usa el TLE archivado del 10 de octubre de 2026, con muestras cada 30 s y elevación mínima de 10°. Antenas urbanas, tasas, solicitudes, valores científicos y créditos son supuestos. ION transfiere el manifiesto por localhost; no demuestra un enlace de radio ni un pago real."
+  },
+  "result": {
+    "engines": [
+      {
+        "name": "SGP4",
+        "version": "2.25"
+      },
+      {
+        "name": "OR-Tools CP-SAT",
+        "version": "9.15.6755"
+      },
+      {
+        "name": "ION",
+        "version": "4.2.0"
+      }
+    ],
+    "sources": [
+      {
+        "id": "iss-2026-10-10",
+        "file": "data/iss.tle",
+        "fixture": "iss-2026-10-10.tle",
+        "url": "https://celestrak.org/NORAD/elements/gp.php?CATNR=25544&FORMAT=TLE",
+        "sha256": "68ebcc5f2a47b0311f1875ed853161dff78895256ab276e0d52a8949fa6a3320",
+        "bytes": 168,
+        "publisher": "CelesTrak",
+        "kind": "archived-tle",
+        "licenseUrl": "https://celestrak.org/NORAD/documentation/gp-data-formats.php"
+      }
+    ],
+    "epochJulianDate": 2461323.45044904,
+    "contacts": [
+      {
+        "id": "tenerife-28200",
+        "station": "tenerife",
+        "start": 28200,
+        "end": 28470,
+        "maxElevationDeg": 18.688566958090412,
+        "latencySec": 0.00483970364153902,
+        "rateBytesPerSec": 64000,
+        "pricePerMbUnits": 1
+      },
+      {
+        "id": "paris-28650",
+        "station": "paris",
+        "start": 28650,
+        "end": 28830,
+        "maxElevationDeg": 13.610348185918687,
+        "latencySec": 0.004870581795352145,
+        "rateBytesPerSec": 64000,
+        "pricePerMbUnits": 2
+      },
+      {
+        "id": "tenerife-33990",
+        "station": "tenerife",
+        "start": 33990,
+        "end": 34290,
+        "maxElevationDeg": 25.1516565523335,
+        "latencySec": 0.004729381747885028,
+        "rateBytesPerSec": 64000,
+        "pricePerMbUnits": 1
+      },
+      {
+        "id": "paris-34320",
+        "station": "paris",
+        "start": 34320,
+        "end": 34710,
+        "maxElevationDeg": 61.25896017401168,
+        "latencySec": 0.004955359727334575,
+        "rateBytesPerSec": 64000,
+        "pricePerMbUnits": 2
+      },
+      {
+        "id": "canberra-36780",
+        "station": "canberra",
+        "start": 36780,
+        "end": 37170,
+        "maxElevationDeg": 79.38006629385927,
+        "latencySec": 0.0049463114331996065,
+        "rateBytesPerSec": 64000,
+        "pricePerMbUnits": 3
+      },
+      {
+        "id": "paris-40140",
+        "station": "paris",
+        "start": 40140,
+        "end": 40530,
+        "maxElevationDeg": 52.38432538347855,
+        "latencySec": 0.0049700082958157,
+        "rateBytesPerSec": 64000,
+        "pricePerMbUnits": 2
+      },
+      {
+        "id": "canberra-42720",
+        "station": "canberra",
+        "start": 42720,
+        "end": 42900,
+        "maxElevationDeg": 13.05499323191421,
+        "latencySec": 0.004988009646030848,
+        "rateBytesPerSec": 64000,
+        "pricePerMbUnits": 3
+      },
+      {
+        "id": "paris-45960",
+        "station": "paris",
+        "start": 45960,
+        "end": 46350,
+        "maxElevationDeg": 62.79175436512189,
+        "latencySec": 0.00496836946612693,
+        "rateBytesPerSec": 64000,
+        "pricePerMbUnits": 2
+      },
+      {
+        "id": "paris-51780",
+        "station": "paris",
+        "start": 51780,
+        "end": 52140,
+        "maxElevationDeg": 38.33365673268131,
+        "latencySec": 0.0048969788361916625,
+        "rateBytesPerSec": 64000,
+        "pricePerMbUnits": 2
+      },
+      {
+        "id": "tenerife-57690",
+        "station": "tenerife",
+        "start": 57690,
+        "end": 57870,
+        "maxElevationDeg": 14.157819532260925,
+        "latencySec": 0.004765750707567188,
+        "rateBytesPerSec": 64000,
+        "pricePerMbUnits": 1
+      },
+      {
+        "id": "canberra-60300",
+        "station": "canberra",
+        "start": 60300,
+        "end": 60630,
+        "maxElevationDeg": 28.50089470496537,
+        "latencySec": 0.004827756680804057,
+        "rateBytesPerSec": 64000,
+        "pricePerMbUnits": 3
+      },
+      {
+        "id": "tenerife-63420",
+        "station": "tenerife",
+        "start": 63420,
+        "end": 63780,
+        "maxElevationDeg": 39.78751036139216,
+        "latencySec": 0.004895281724672157,
+        "rateBytesPerSec": 64000,
+        "pricePerMbUnits": 1
+      },
+      {
+        "id": "canberra-66120",
+        "station": "canberra",
+        "start": 66120,
+        "end": 66420,
+        "maxElevationDeg": 24.636059315258073,
+        "latencySec": 0.0047425188762762124,
+        "rateBytesPerSec": 64000,
+        "pricePerMbUnits": 3
+      }
+    ],
+    "requests": [
+      {
+        "id": "science-1",
+        "bytes": 5000000,
+        "value": 82,
+        "releaseAt": 0,
+        "deadline": 26000
+      },
+      {
+        "id": "science-2",
+        "bytes": 9000000,
+        "value": 32,
+        "releaseAt": 0,
+        "deadline": 26000
+      },
+      {
+        "id": "science-3",
+        "bytes": 4000000,
+        "value": 72,
+        "releaseAt": 0,
+        "deadline": 26000
+      },
+      {
+        "id": "science-4",
+        "bytes": 12000000,
+        "value": 33,
+        "releaseAt": 0,
+        "deadline": 26000
+      },
+      {
+        "id": "science-5",
+        "bytes": 6000000,
+        "value": 40,
+        "releaseAt": 12000,
+        "deadline": 38000
+      },
+      {
+        "id": "science-6",
+        "bytes": 8000000,
+        "value": 83,
+        "releaseAt": 12000,
+        "deadline": 38000
+      },
+      {
+        "id": "science-7",
+        "bytes": 8000000,
+        "value": 23,
+        "releaseAt": 12000,
+        "deadline": 38000
+      },
+      {
+        "id": "science-8",
+        "bytes": 11000000,
+        "value": 39,
+        "releaseAt": 12000,
+        "deadline": 38000
+      },
+      {
+        "id": "science-9",
+        "bytes": 12000000,
+        "value": 19,
+        "releaseAt": 24000,
+        "deadline": 50000
+      },
+      {
+        "id": "science-10",
+        "bytes": 11000000,
+        "value": 28,
+        "releaseAt": 24000,
+        "deadline": 50000
+      },
+      {
+        "id": "science-11",
+        "bytes": 6000000,
+        "value": 69,
+        "releaseAt": 24000,
+        "deadline": 50000
+      },
+      {
+        "id": "science-12",
+        "bytes": 6000000,
+        "value": 62,
+        "releaseAt": 24000,
+        "deadline": 50000
+      },
+      {
+        "id": "science-13",
+        "bytes": 9000000,
+        "value": 59,
+        "releaseAt": 36000,
+        "deadline": 62000
+      },
+      {
+        "id": "science-14",
+        "bytes": 12000000,
+        "value": 49,
+        "releaseAt": 36000,
+        "deadline": 62000
+      },
+      {
+        "id": "science-15",
+        "bytes": 5000000,
+        "value": 100,
+        "releaseAt": 36000,
+        "deadline": 62000
+      },
+      {
+        "id": "science-16",
+        "bytes": 12000000,
+        "value": 20,
+        "releaseAt": 36000,
+        "deadline": 62000
+      }
+    ],
+    "awards": [
+      {
+        "requestId": "science-6",
+        "contactId": "tenerife-28200",
+        "station": "tenerife",
+        "start": 28200,
+        "end": 28325,
+        "bytes": 8000000,
+        "scienceValue": 83,
+        "costUnits": 8,
+        "latencySec": 0.00483970364153902
+      },
+      {
+        "requestId": "science-5",
+        "contactId": "tenerife-28200",
+        "station": "tenerife",
+        "start": 28325,
+        "end": 28419,
+        "bytes": 6000000,
+        "scienceValue": 40,
+        "costUnits": 6,
+        "latencySec": 0.00483970364153902
+      },
+      {
+        "requestId": "science-11",
+        "contactId": "tenerife-33990",
+        "station": "tenerife",
+        "start": 33991,
+        "end": 34085,
+        "bytes": 6000000,
+        "scienceValue": 69,
+        "costUnits": 6,
+        "latencySec": 0.004729381747885028
+      },
+      {
+        "requestId": "science-12",
+        "contactId": "tenerife-33990",
+        "station": "tenerife",
+        "start": 34085,
+        "end": 34179,
+        "bytes": 6000000,
+        "scienceValue": 62,
+        "costUnits": 6,
+        "latencySec": 0.004729381747885028
+      },
+      {
+        "requestId": "science-13",
+        "contactId": "tenerife-57690",
+        "station": "tenerife",
+        "start": 57690,
+        "end": 57831,
+        "bytes": 9000000,
+        "scienceValue": 59,
+        "costUnits": 9,
+        "latencySec": 0.004765750707567188
+      },
+      {
+        "requestId": "science-15",
+        "contactId": "canberra-60300",
+        "station": "canberra",
+        "start": 60300,
+        "end": 60379,
+        "bytes": 5000000,
+        "scienceValue": 100,
+        "costUnits": 15,
+        "latencySec": 0.004827756680804057
+      }
+    ],
+    "solverStatus": "OPTIMAL",
+    "objectiveBound": 412999950,
+    "objectiveValue": 412999950,
+    "scienceValue": 413,
+    "spentUnits": 50,
+    "remainingUnits": 0,
+    "invariantsPassed": true,
+    "baseline": {
+      "method": "first-come-first-served",
+      "awards": [
+        {
+          "requestId": "science-5",
+          "start": 28200,
+          "end": 28294,
+          "value": 40,
+          "costUnits": 6
+        },
+        {
+          "requestId": "science-6",
+          "start": 28294,
+          "end": 28419,
+          "value": 83,
+          "costUnits": 8
+        },
+        {
+          "requestId": "science-7",
+          "start": 33990,
+          "end": 34115,
+          "value": 23,
+          "costUnits": 8
+        },
+        {
+          "requestId": "science-8",
+          "start": 34115,
+          "end": 34287,
+          "value": 39,
+          "costUnits": 11
+        },
+        {
+          "requestId": "science-15",
+          "start": 36780,
+          "end": 36859,
+          "value": 100,
+          "costUnits": 15
+        }
+      ],
+      "scienceValue": 285,
+      "spentUnits": 48
+    },
+    "transportProof": {
+      "engine": "ION",
+      "version": "4.2.0",
+      "protocol": "BPv7 / UDP",
+      "transport": "127.0.0.1",
+      "payloadKind": "schedule-manifest",
+      "bytes": 1193,
+      "sentSha256": "04a2762590ba3f6d24a0546a330a7f11e1a9e28abe6039077f0850518d6e7b39",
+      "receivedSha256": "04a2762590ba3f6d24a0546a330a7f11e1a9e28abe6039077f0850518d6e7b39",
+      "verified": true,
+      "nodes": 2
+    },
+    "receipt": {
+      "payload": {
+        "manifestSha256": "04a2762590ba3f6d24a0546a330a7f11e1a9e28abe6039077f0850518d6e7b39",
+        "settledUnits": 50,
+        "returnedUnits": 0,
+        "budgetUnits": 50,
+        "awardCount": 6,
+        "transport": "localhost BPv7 UDP",
+        "credits": "fictional"
+      },
+      "publicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAd7Z80eoIF5gu2YNTprjcrCR73cwB8CcmifpoXrH2B50=\n-----END PUBLIC KEY-----\n",
+      "signature": "xnQ4Sfsrc9nbWA4Pb+hU3OJX79Jz9iAkW6moLSuBMdTAGMszZq7YFFLCFooYMEvDdYSns53+4kOLN/h8LktDDQ=="
+    },
+    "receiptVerified": true
+  }
+}
