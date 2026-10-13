@@ -1,16 +1,17 @@
-import { messageTranslations } from '/i18n.js';
+import { messageTranslations } from './i18n.js';
 import {
   commonsDefaults,
   commonsConfig,
   commonsLink,
   readCommons,
   dailyCommons,
-} from '/space-lib/commons.js';
+} from './space-lib/commons.js';
 const $ = (id) => document.getElementById(id),
   kind = document.body.dataset.kind,
   locale = document.documentElement.lang,
   index = { fr: 0, en: 1, es: 2 }[locale],
-  publicMode = document.body.dataset.public === 'true';
+  publicMode = document.body.dataset.public === 'true',
+  basePath = document.body.dataset.basePath || '';
 const t = (key, params = {}) =>
   messageTranslations[key][index].replace(/\{(\w+)\}/g, (_, name) => String(params[name] ?? ''));
 const e = (value) =>
@@ -38,14 +39,14 @@ function load(config) {
 }
 function link() {
   const target = new URL(commonsLink(location.origin, kind, config(), locale, day));
-  if (publicMode) target.pathname = '/' + locale + target.pathname;
+  if (publicMode) target.pathname = basePath + '/' + locale + target.pathname;
   const url = target.href;
   $('commons-link').value = url;
   history.replaceState(null, '', url);
   $('commons-day').textContent = day ? `${t('commonsDaily')} · ${day}` : '';
   for (const a of document.querySelectorAll('.commons-language')) {
     const alternate = new URL(commonsLink(location.origin, kind, config(), a.lang, day));
-    if (publicMode) alternate.pathname = '/' + a.lang + alternate.pathname;
+    if (publicMode) alternate.pathname = basePath + '/' + a.lang + alternate.pathname;
     a.href = alternate.href;
   }
   return url;
@@ -195,7 +196,7 @@ async function execute(fresh) {
       const query = new URLSearchParams({ kind, ...current });
       response = await fetch(
         publicMode
-          ? `/space-evidence/${kind}-${await configHash(current)}.json`
+          ? `${basePath}/space-evidence/${kind}-${await configHash(current)}.json`
           : '/api/replay?' + query,
       );
     }
@@ -409,7 +410,10 @@ $('commons-card').onclick = () => {
   });
 };
 try {
-  const shared = readCommons(location.href);
+  const currentURL = new URL(location.href);
+  if (publicMode && [basePath, basePath + '/'].includes(currentURL.pathname))
+    currentURL.pathname = basePath + '/space/commons/' + kind;
+  const shared = readCommons(currentURL.href);
   load(shared.config);
   day = shared.day;
   link();

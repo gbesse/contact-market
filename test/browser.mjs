@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 import { chromium } from 'playwright';
 import { readFile, mkdir, mkdtemp, rm } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
@@ -77,6 +79,66 @@ try {
     assert.equal((await fetch(preview.origin + '/api/session')).status, 404);
   } finally {
     await preview.close();
+  }
+  const mount = '/' + project.slug;
+  await promisify(execFile)(process.execPath, ['scripts/build.mjs'], {
+    env: { ...process.env, SITE_BASE_PATH: mount },
+  });
+  const prefixed = await staticPreview(resolve('output/site'), 0, { basePath: mount });
+  try {
+    await page.goto(prefixed.origin + mount + '/');
+    assert.equal(
+      await page.locator('#commons-status').textContent(),
+      messageTranslations.commonsStartChallenge[0],
+    );
+    const failures = [];
+    page.on('response', (response) => {
+      if (response.status() >= 400 && response.url().startsWith(prefixed.origin))
+        failures.push(response.url());
+    });
+    for (const [index, locale] of ['fr', 'en', 'es'].entries()) {
+      await page.goto(
+        `${prefixed.origin}${mount}/${locale}/space/commons/${project.kind}/?lang=${locale}`,
+      );
+      await page.locator('#commons-replay').click();
+      await page.locator('#commons-export:not([disabled])').waitFor();
+      const shared = await page.locator('#commons-link').inputValue();
+      assert.ok(new URL(shared).pathname.startsWith(`${mount}/${locale}/space/commons/`));
+      await page.goto(shared);
+      await page.locator('#commons-daily').click();
+      await page.locator('#commons-replay').click();
+      await page.locator('#commons-export:not([disabled])').waitFor();
+      const currentConfig = await page.locator('#commons-link').inputValue();
+      const next = ['en', 'es', 'fr'][index];
+      await page.locator(`.commons-language[lang="${next}"]`).click();
+      assert.equal(await page.locator('html').getAttribute('lang'), next);
+      assert.equal(
+        new URL(page.url()).searchParams.get('day'),
+        new URL(currentConfig).searchParams.get('day'),
+      );
+      await page.locator('#commons-replay').click();
+      await page.locator('#commons-export:not([disabled])').waitFor();
+      const proofDownload = page.waitForEvent('download');
+      await page.locator('#commons-export').click();
+      assert.equal(
+        JSON.parse(await readFile(await (await proofDownload).path(), 'utf8')).locale,
+        next,
+      );
+      const pngDownload = page.waitForEvent('download');
+      await page.locator('#commons-card').click();
+      assert.match((await pngDownload).suggestedFilename(), /\.png$/);
+      await page.locator(`a[href*="space-method"]`).click();
+      assert.equal(await page.locator('html').getAttribute('lang'), next);
+    }
+    assert.deepEqual(failures, []);
+    assert.equal((await fetch(prefixed.origin + '/i18n.js')).status, 404);
+    assert.equal((await fetch(prefixed.origin + mount + '/api/session')).status, 404);
+    assert.equal(
+      await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
+      true,
+    );
+  } finally {
+    await prefixed.close();
   }
   assert.deepEqual(errors, []);
   console.log(

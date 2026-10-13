@@ -3,13 +3,15 @@ import { resolve, dirname } from 'node:path';
 import { project } from '../src/project.js';
 import { renderCommons, renderCommonsMethod } from '../src/page.js';
 import { readCommonsEvidence } from '../src/commons-engine.js';
+import { normalizeBasePath, mountHTML } from './site-base.mjs';
+const basePath = normalizeBasePath(process.env.SITE_BASE_PATH);
 const directory = resolve('output/site');
 await rm(directory, { recursive: true, force: true });
 await mkdir(directory, { recursive: true });
 async function save(path, text) {
   const file = resolve(directory, path);
   await mkdir(dirname(file), { recursive: true });
-  await writeFile(file, text);
+  await writeFile(file, path.endsWith('.html') ? mountHTML(text, basePath) : text);
 }
 for (const [source, target] of [
   ['public/style.css', 'style.css'],
@@ -54,6 +56,7 @@ await save(
       version: project.version,
       kind: project.kind,
       languages: ['fr', 'en', 'es'],
+      basePath,
       reports,
       localAPIsPublished: false,
     },
@@ -61,6 +64,7 @@ await save(
     2,
   ),
 );
+await save('.nojekyll', '');
 await copyFile('LICENSE', resolve(directory, 'LICENSE'));
 console.log(
   `FR : site statique créé. EN: static site built. ES: sitio estático creado. ${directory}`,

@@ -1,4 +1,4 @@
-@import url('/style.css');
+@import url('./style.css');
 :root {
   --space-bg: #101c26;
   --space-text: #ecf4f4;

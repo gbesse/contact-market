@@ -34,5 +34,5 @@ export const project = {
     'scheduling',
     'open-source',
   ],
-  version: '0.1.0',
+  version: '0.1.1',
 };

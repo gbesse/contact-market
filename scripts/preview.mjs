@@ -1,11 +1,21 @@
 import http from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { resolve, sep, extname } from 'node:path';
-export async function staticPreview(directory = resolve('output/site'), port = 0) {
+import { normalizeBasePath } from './site-base.mjs';
+export async function staticPreview(
+  directory = resolve('output/site'),
+  port = 0,
+  { basePath = '' } = {},
+) {
+  const mount = normalizeBasePath(basePath);
   const root = resolve(directory);
   const server = http.createServer(async (req, res) => {
     try {
-      const path = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+      let path = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+      if (mount) {
+        if (path !== mount && !path.startsWith(mount + '/')) throw new Error('PATH');
+        path = path.slice(mount.length) || '/';
+      }
       let target = resolve(root, '.' + path);
       if (target !== root && !target.startsWith(root + sep)) throw new Error('PATH');
       if ((await stat(target)).isDirectory()) target = resolve(target, 'index.html');
