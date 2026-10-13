@@ -1,5 +1,13 @@
 # Contact Market
 
+## Public demo without installation
+
+[Open the EN demo](https://gbesse.github.io/contact-market/en/space/commons/market/?lang=en) · [FR](https://gbesse.github.io/contact-market/fr/space/commons/market/?lang=fr) · [ES](https://gbesse.github.io/contact-market/es/space/commons/market/?lang=es).
+
+The public edition replays archived computational evidence and retains daily challenges, shareable settings and JSON/PNG exports. It runs no engine and exposes no local API. The daily challenge comes from a fixed catalog; no global leaderboard or external audience is assumed. GitHub Pages is rebuilt and tested on every change to `main`.
+
+To host under a path, use `SITE_BASE_PATH=/contact-market/ npm run build`. Without this variable the site still works at a domain root. All three languages, links, resources and evidence stay under that prefix. `manifest.json` records `basePath`.
+
 [![CI](https://github.com/gbesse/contact-market/actions/workflows/ci.yml/badge.svg)](https://github.com/gbesse/contact-market/actions) · [![MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE) · FR / EN / ES
 
 [Français](README.md) · English · [Español](README.es.md)

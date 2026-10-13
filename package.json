@@ -1,6 +1,6 @@
 {
   "name": "@gbesse/contact-market",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "main": "src/index.js",
   "exports": "./src/index.js",
@@ -40,7 +40,7 @@
     "type": "git",
     "url": "https://github.com/gbesse/contact-market.git"
   },
-  "homepage": "https://github.com/gbesse/contact-market#readme",
+  "homepage": "https://gbesse.github.io/contact-market/",
   "description": "FR : Optimiser la science transmise sous budget. EN: Optimize transmitted science under a budget. ES: Optimizar la ciencia transmitida con presupuesto.",
   "keywords": [
     "space",
