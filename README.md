@@ -68,3 +68,7 @@ npm run format:check
 `npm run build` exporte `output/site` pour un hébergement statique à la racine d’un domaine. Cette édition rejoue les cas publiés, sans moteur ni API locale exposée.
 
 [Mission Benchmark Commons](https://github.com/gbesse/mission-benchmark-commons) · [Contact Market](https://github.com/gbesse/contact-market) · [Citizen Mission](https://github.com/gbesse/citizen-mission)
+
+## Audit indépendant du planning
+
+`verifyMarketSchedule(result, config)` recalcule les contraintes temporelles, doublons, stations indisponibles, volumes, coûts et totaux scientifiques depuis les requêtes et contacts déclarés. Les replays et nouveaux calculs incluent `scheduleAudit` et refusent une incohérence. Cet audit vérifie la faisabilité et la comptabilité déclarées, pas l’optimalité CP-SAT, l’authenticité des sources ni une liaison radio réelle. Les reçus et preuves ION restent vérifiés séparément.

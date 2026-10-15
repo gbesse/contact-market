@@ -1,3 +1,4 @@
+import { verifyMarketSchedule } from './schedule-audit.js';
 import { spawn } from 'node:child_process';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
@@ -109,6 +110,8 @@ export async function runCommons(
       result.receiptVerified = verifyMarketReceipt(result.receipt);
       result.engines.push({ name: 'ION', version: '4.2.0' });
     }
+    const scheduleAudit = kind === 'market' ? verifyMarketSchedule(result, config) : null;
+    if (scheduleAudit && !scheduleAudit.valid) throw new Error('COMMONS_MARKET_INTEGRITY');
     const evidence = { kind, config, result };
     return {
       schemaVersion: 1,
@@ -120,6 +123,7 @@ export async function runCommons(
       elapsedMs: Date.now() - started,
       evidenceSha256: digest(JSON.stringify(evidence)),
       execution: 'fresh',
+      ...(scheduleAudit ? { scheduleAudit } : {}),
       notices: commonsNotices[kind],
       result,
     };
@@ -162,5 +166,8 @@ export async function readCommonsEvidence(kind, config, directory) {
     )
       throw new Error('COMMONS_EVIDENCE_INTEGRITY');
   }
-  return { ...report, execution: 'replay' };
+  const scheduleAudit =
+    kind === 'market' ? verifyMarketSchedule(report.result, report.config) : null;
+  if (scheduleAudit && !scheduleAudit.valid) throw new Error('COMMONS_MARKET_INTEGRITY');
+  return { ...report, execution: 'replay', ...(scheduleAudit ? { scheduleAudit } : {}) };
 }
