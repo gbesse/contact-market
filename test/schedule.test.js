@@ -33,3 +33,50 @@ test('malformed numbers and duplicate definitions cannot silently verify', () =>
   assert.equal(verifyMarketSchedule(r, report.config).valid, false);
   assert.equal(verifyMarketSchedule({}, {}).valid, false);
 });
+
+test('coverage distinguishes unallocated requests from declared route success', () => {
+  const result = verifyMarketSchedule(report.result, report.config),
+    allocated = new Set(report.result.awards.map((a) => a.requestId));
+  assert.equal(result.requestCoverage.declared, report.result.requests.length);
+  assert.equal(result.requestCoverage.allocated, allocated.size);
+  assert.deepEqual(
+    result.requestCoverage.unallocatedRequestIds,
+    report.result.requests
+      .map((r) => r.id)
+      .filter((id) => !allocated.has(id))
+      .sort(),
+  );
+  assert.equal(
+    result.requestCoverage.allocated + result.requestCoverage.unallocatedRequestIds.length,
+    result.requestCoverage.recognized,
+  );
+});
+test('overflowed science cannot validate by comparing Infinity to Infinity', () => {
+  const requests = [0, 1].map((i) => ({
+    id: 'r' + i,
+    bytes: 1,
+    value: 1e308,
+    releaseAt: 0,
+    deadline: 3,
+  }));
+  const contacts = [
+    { id: 'c', station: 'station', start: 0, end: 3, rateBytesPerSec: 1, pricePerMbUnits: 0 },
+  ];
+  const awards = requests.map((r, i) => ({
+    requestId: r.id,
+    contactId: 'c',
+    station: 'station',
+    start: i,
+    end: i + 1,
+    costUnits: 0,
+    scienceValue: r.value,
+    bytes: 1,
+  }));
+  const result = verifyMarketSchedule(
+    { requests, contacts, awards, spentUnits: 0, remainingUnits: 10, scienceValue: Infinity },
+    { budgetUnits: 10, outage: 'none' },
+  );
+  assert.equal(result.valid, false);
+  assert.equal(result.scienceValue, null);
+  assert.ok(result.issues.some((i) => i.code === 'total_accounting_mismatch'));
+});
