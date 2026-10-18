@@ -72,3 +72,5 @@ npm run format:check
 ## Independent schedule audit
 
 `verifyMarketSchedule(result, config)` recomputes time constraints, duplicates, unavailable stations, volumes, costs and science totals from declared requests/contacts. Replays and new computations include `scheduleAudit` and reject inconsistencies. This checks declared feasibility/accounting, not CP-SAT optimality, source authenticity or a real radio link. Receipts and ION proofs remain separately verified.
+
+The audit exposes `requestCoverage`: declared requests, recognized identities, allocations and a sorted list of requests without a slot. An allocation is not real data delivery; interpret coverage only when `valid` is true. Nonfinite science totals are rejected and returned as `null`, even when two infinite values appeared equal. These checks prove neither solver optimality nor real satellite service.

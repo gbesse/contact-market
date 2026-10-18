@@ -72,3 +72,5 @@ npm run format:check
 ## Auditoría independiente del horario
 
 `verifyMarketSchedule(result, config)` recalcula restricciones temporales, duplicados, estaciones indisponibles, volúmenes, costes y totales científicos desde solicitudes/contactos declarados. Repeticiones y cálculos nuevos incluyen `scheduleAudit` y rechazan incoherencias. Comprueba factibilidad/contabilidad declaradas, no optimalidad CP-SAT, autenticidad de fuentes ni enlaces radio reales. Recibos y pruebas ION se verifican por separado.
+
+La auditoría muestra `requestCoverage`: solicitudes declaradas, identidades reconocidas, asignaciones y lista ordenada sin ventana. Una asignación no es entrega real de datos; interprete la cobertura solo cuando `valid` sea verdadero. Se rechazan totales científicos no finitos y se devuelven como `null`, aunque dos infinitos parezcan iguales. No demuestra optimalidad del solver ni servicio satelital real.

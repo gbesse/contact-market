@@ -86,6 +86,7 @@ export function verifyMarketSchedule(result, config) {
     if (scheduled[i].start < scheduled[i - 1].end)
       issue('overlapping_awards', scheduled[i].requestId);
   if (
+    !finite(science) ||
     !finite(spent) ||
     spent > config.budgetUnits ||
     spent !== result.spentUnits ||
@@ -98,6 +99,12 @@ export function verifyMarketSchedule(result, config) {
     issues,
     awardsChecked: result.awards.length,
     spentUnits: spent,
-    scienceValue: science,
+    scienceValue: finite(science) ? science : null,
+    requestCoverage: {
+      declared: result.requests.length,
+      recognized: requests.size,
+      allocated: delivered.size,
+      unallocatedRequestIds: [...requests.keys()].filter((id) => !delivered.has(id)).sort(),
+    },
   };
 }

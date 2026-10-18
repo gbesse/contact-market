@@ -72,3 +72,5 @@ npm run format:check
 ## Audit indépendant du planning
 
 `verifyMarketSchedule(result, config)` recalcule les contraintes temporelles, doublons, stations indisponibles, volumes, coûts et totaux scientifiques depuis les requêtes et contacts déclarés. Les replays et nouveaux calculs incluent `scheduleAudit` et refusent une incohérence. Cet audit vérifie la faisabilité et la comptabilité déclarées, pas l’optimalité CP-SAT, l’authenticité des sources ni une liaison radio réelle. Les reçus et preuves ION restent vérifiés séparément.
+
+L’audit expose `requestCoverage` : demandes déclarées, identifiants reconnus, affectations et liste triée des demandes sans créneau. Une affectation n’est pas une livraison de données réelle ; la couverture n’est interprétable que si `valid` est vrai. Un total scientifique non fini est refusé et retourné comme `null`, même si deux valeurs infinies semblaient égales. Ces contrôles ne prouvent ni l’optimalité du solveur ni un service satellite réel.
